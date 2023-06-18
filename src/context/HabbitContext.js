@@ -4,6 +4,7 @@ const HabbitContext = createContext({
   habbitList: [],
   archiveHabbit: () => {},
   deleteHabbit: () => {},
+  updateHabbit: () => {}
 });
 
 export const HabbitProvider = ({ children }) => {
@@ -22,12 +23,22 @@ export const HabbitProvider = ({ children }) => {
    const habbits =  habbitList.filter(({id}) => id !== habbitId);
    setHabbitList(habbits);
   }
+  const updateHabbit = (data) => {
+    const habbits =  habbitList.map((habbit) => {
+        if(data.id === habbit.id) {
+            return {...data};
+        }
+        return habbit;
+    });
+    setHabbitList(habbits);
+  }
   return (
     <HabbitContext.Provider
       value={{
         habbitList,
         deleteHabbit,
-        archiveHabbit
+        archiveHabbit,
+        updateHabbit
       }}
     >
       {children}
