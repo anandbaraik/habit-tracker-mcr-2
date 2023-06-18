@@ -49,16 +49,18 @@ const Home = () => {
 
     const handleSave = (e) => {
         e.preventDefault();
-        addHabbit(habbit);
-        setModelOpen(false);
-        setHabbit({
-            name : "",
-            repeat: "",
-            goal: "",
-            time: "",
-            startdate : "",
-            archive: false
-        })
+        if(habbit.name || habbit.repeat || habbit.goal || habbit.time || habbit.startdate) {
+            addHabbit(habbit);
+            setModelOpen(false);
+            setHabbit({
+                name : "",
+                repeat: "",
+                goal: "",
+                time: "",
+                startdate : "",
+                archive: false
+            })
+        }
     }
 
   return (
