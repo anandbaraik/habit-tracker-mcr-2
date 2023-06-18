@@ -4,8 +4,16 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
-const HabbitCard = ({habbit}) => {
-    const {name} = habbit;
+import { useHabbit } from '../context/HabbitContext';
+const HabbitCard = ({habbit, landingPage}) => {
+    const {name, id} = habbit;
+    const {deleteHabbit, archiveHabbit} = useHabbit();
+    const deleteHandle = () => {
+        deleteHabbit(id);
+    }
+    const archiveHandle = () => {
+        archiveHabbit(id);
+    }
   return (
     <>
     <Card sx={{ maxWidth: 345 }}>
@@ -15,9 +23,16 @@ const HabbitCard = ({habbit}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Edit</Button>
-        <Button size="small">Delete</Button>
-        <Button size="small">Archive</Button>
+        <Button size="small">View</Button>
+        {
+            landingPage && (
+                <>
+                <Button size="small">Edit</Button>
+                <Button size="small" color="secondary" onClick={archiveHandle}>Archive</Button>
+                </>
+            )
+        }
+        <Button size="small" color="error" onClick={deleteHandle}>Delete</Button>
       </CardActions>
     </Card>
     </>

@@ -16,10 +16,14 @@ const Archived = () => {
             </div>
             <div className='container'>
                 {
-                    (archivedHabbits?.length > 0) && (
+                    (archivedHabbits?.length > 0) ? (
                         archivedHabbits?.map((habbit) => {
                             return <HabbitCard habbit={habbit} key={habbit.id}/>
                         })
+                    ) : (
+                        <h3>
+                            No archived habbits found.
+                        </h3>
                     )
                 }
             </div>

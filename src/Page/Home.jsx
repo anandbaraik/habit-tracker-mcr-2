@@ -17,10 +17,12 @@ const Home = () => {
             </div>
             <div className='container'>
                 {
-                    (activeHabbits?.length > 0) && (
+                    (activeHabbits?.length > 0) ? (
                         activeHabbits?.map((habbit) => {
-                            return <HabbitCard habbit={habbit} key={habbit.id}/>
+                            return <HabbitCard habbit={habbit} key={habbit.id} landingPage/>
                         })
+                    ) : (
+                        <h3>Add some habbit</h3>
                     )
                 }
             </div>
