@@ -4,7 +4,8 @@ const HabbitContext = createContext({
   habbitList: [],
   archiveHabbit: () => {},
   deleteHabbit: () => {},
-  updateHabbit: () => {}
+  updateHabbit: () => {},
+  addHabbit: () => {}
 });
 
 export const HabbitProvider = ({ children }) => {
@@ -32,13 +33,20 @@ export const HabbitProvider = ({ children }) => {
     });
     setHabbitList(habbits);
   }
+  const addHabbit = (data) => {
+    data = {...data, id:Math.floor(Math.random() * 100000)};
+    const habbits = [...habbitList, data];
+    setHabbitList(habbits);
+  }
+
   return (
     <HabbitContext.Provider
       value={{
         habbitList,
         deleteHabbit,
         archiveHabbit,
-        updateHabbit
+        updateHabbit,
+        addHabbit
       }}
     >
       {children}

@@ -181,7 +181,7 @@ const HabbitCard = ({habbit, landingPage}) => {
                     </div>
                     <div style={{marginTop:"1rem", display:"flex", gap:"1rem"}}>
                     <Button size="small" variant="outlined" onClick={handleModalClose}>Close</Button>
-                    <Button size="small" type='submit' variant="contained" onClick={handleSave}>Save</Button>
+                    <Button size="small" type='submit' variant="contained" onClick={handleSave}>Update</Button>
                     </div>
                 </Box>
                 )
